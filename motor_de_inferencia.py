@@ -38,4 +38,4 @@ hechos["i_realista"]["valor"] = 85       # imprimirá True
 print("Interés Realista cumple:", evaluar("i_realista"))
 
 hechos["a_razonamiento_verbal"]["valor"] = 50        # imprimirá False
-print("Aptitud Razonamiento abstracto cumple:", evaluar("a_razonamiento_verbal"))
+print("Aptitud Razonamiento verbal cumple:", evaluar("a_razonamiento_verbal"))
