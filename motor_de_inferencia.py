@@ -100,6 +100,8 @@ sum([hechos_aptitudes[f'a_razonamiento_numerico_{i}'] for i in range(1, 4)])/3,
 sum([hechos_aptitudes[f'a_aptitud_espacial_{i}'] for i in range(1, 4)])/3,
     'a_creatividad': 
 sum([hechos_aptitudes[f'a_creatividad_{i}'] for i in range(1, 4)])/3,
+    'a_pensamiento_computacional':
+sum([hechos_aptitudes[f' a_pensamiento_computacional_{i}'] for i in range(1, 4)])/3,
 
 }
 
@@ -110,10 +112,51 @@ sum([hechos_aptitudes[f'a_creatividad_{i}'] for i in range(1, 4)])/3,
 
 top_intereses = dict(sorted(puntajes_intereses.items(), key=lambda item: item[1], reverse=True)) #esta línea ordena el diccionario de puntajes de intereses de mayor a menor y lo guarda en la variable top_intereses
 
-(interes_mayor, valor_1), (interes_segundo, valor_2), (interes_tercero, valor_3) = list(top_intereses.items())[:3]
+(interes_mayor, valor_1), (interes_segundo, valor_2), (interes_tercero, valor_3) = list(top_intereses.items())[:3]# esta línea guarda los tres intereses mas altos y los guarda en variables separadas
 
 
 print("Los tres intereses más altos son:")
 print(f"1. {interes_mayor}")
 print(f"2. {interes_segundo}")
 print(f"3. {interes_tercero}")
+
+resultado_fisico_matematico = 0
+resultado_quimico_biologico = 0
+resultado_economico_administrativo = 0
+resultado_humanidades= 0
+
+
+match interes_mayor:
+    case 'i_realista':
+        resultado_fisico_matematico = 6
+        resultado_quimico_biologico = 6
+        resultado_economico_administrativo = 3
+        resultado_humanidades = 
+
+    case 'i_investigativo':
+        resultado_fisico_matematico = 9
+        resultado_quimico_biologico = 9
+        resultado_economico_administrativo = 0
+        resultado_humanidades =
+    case 'i_artistico':
+        resultado_fisico_matematico = 6
+        resultado_quimico_biologico = 6
+        resultado_economico_administrativo = 3
+        resultado_humanidades =
+    case 'i_social':
+        resultado_fisico_matematico = 3
+        resultado_quimico_biologico = 3
+        resultado_economico_administrativo = 6
+        resultado_humanidades =
+    case 'i_emprendedor':
+        resultado_fisico_matematico =  0
+        resultado_quimico_biologico = 0
+        resultado_economico_administrativo = 9
+        resultado_humanidades = 
+    case 'i_convencional':
+        resultado_fisico_matematico = 3
+        resultado_quimico_biologico = 3
+        resultado_economico_administrativo = 6
+        resultado_humanidades = 
+
+print(f"El resultado de la inferencia para el interés {interes_mayor} es: {resultado_fisico_matematico}")
