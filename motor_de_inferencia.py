@@ -108,3 +108,12 @@ sum([hechos_aptitudes[f'a_creatividad_{i}'] for i in range(1, 4)])/3,
 #     print(f"{interes}: {valor}")
 
 
+top_intereses = dict(sorted(puntajes_intereses.items(), key=lambda item: item[1], reverse=True)) #esta línea ordena el diccionario de puntajes de intereses de mayor a menor y lo guarda en la variable top_intereses
+
+(interes_mayor, valor_1), (interes_segundo, valor_2), (interes_tercero, valor_3) = list(top_intereses.items())[:3]
+
+
+print("Los tres intereses más altos son:")
+print(f"1. {interes_mayor}")
+print(f"2. {interes_segundo}")
+print(f"3. {interes_tercero}")
