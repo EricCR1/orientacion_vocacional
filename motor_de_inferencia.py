@@ -233,10 +233,15 @@ match interes_tercero:
 # print(f"Resultado Humanidades: {interes_humanidades/18}")
 
 aptitud_fisico_matematico = ((1 * (puntajes_aptitudes['a_razonamiento_numerico'] + puntajes_aptitudes['a_razonamiento_abstracto'] + puntajes_aptitudes['a_pensamiento_computacional'] + puntajes_aptitudes['a_espacial'] ))+(0.5 * (puntajes_aptitudes['a_mecanica']  + puntajes_aptitudes['a_destreza_manual'] )))/5
-aptitud_quimico_biologico = 0
-aptitud_economico_administrativo = 0
-aptitud_humanidades= 0
 
+aptitud_quimico_biologico = ((1 * (puntajes_aptitudes['a_razonamiento_verbal'] + puntajes_aptitudes['a_razonamiento_numerico'] + puntajes_aptitudes['a_memoria'] + puntajes_aptitudes['a_razonamiento_abstracto'] ))+(0.5 * (puntajes_aptitudes['a_interpersonal']  + puntajes_aptitudes['a_destreza_manual'] )))/5
 
+aptitud_economico_administrativo = ((1 * (puntajes_aptitudes['a_razonamiento_numerico'] )+ (puntajes_aptitudes['a_interpersonal'] ))+(0.5 * (puntajes_aptitudes['a_razonamiento_verbal']  + puntajes_aptitudes['a_memoria'] )))/3
 
-print(aptitud_fisico_matematico)
+aptitud_humanidades= ((1 * (puntajes_aptitudes['a_razonamiento_verbal'] + puntajes_aptitudes['a_creatividad'] + puntajes_aptitudes['a_interpersonal'] + puntajes_aptitudes['a_memoria'] ))+(0.5 * (puntajes_aptitudes['a_espacial']  + puntajes_aptitudes['a_destreza_manual'] )))/5
+
+print("Resultados de la ponderación de aptitudes:")
+print(f"Aptitud Físico-Matemático: {aptitud_fisico_matematico}")
+print(f"Aptitud Químico-Biológico: {aptitud_quimico_biologico}")
+print(f"Aptitud Económico-Administrativo: {aptitud_economico_administrativo}")
+print(f"Aptitud Humanidades: {aptitud_humanidades}")
