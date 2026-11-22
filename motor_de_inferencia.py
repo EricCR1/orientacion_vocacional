@@ -40,24 +40,24 @@ hechos_aptitudes = {
     'a_razonamiento_abstracto_1': random.randint(0, 5),
     'a_razonamiento_abstracto_2': random.randint(0, 5),
     'a_razonamiento_abstracto_3': random.randint(0, 5),
-    'a_mecananica_1': random.randint(0, 5),
-    'a_mecananica_2': random.randint(0, 5),
-    'a_mecananica_3': random.randint(0, 5),
+    'a_mecanica_1': random.randint(0, 5),
+    'a_mecanica_2': random.randint(0, 5),
+    'a_mecanica_3': random.randint(0, 5),
     'a_memoria_1': random.randint(0, 5),
     'a_memoria_2': random.randint(0, 5),
     'a_memoria_3': random.randint(0, 5),
-    'a_aptitud_interpersonal_1': random.randint(0, 5),
-    'a_aptitud_interpersonal_2': random.randint(0, 5),
-    'a_aptitud_interpersonal_3': random.randint(0, 5),
+    'a_interpersonal_1': random.randint(0, 5),
+    'a_interpersonal_2': random.randint(0, 5),
+    'a_interpersonal_3': random.randint(0, 5),
     'a_destreza_manual_1': random.randint(0, 5),
     'a_destreza_manual_2': random.randint(0, 5),
     'a_destreza_manual_3': random.randint(0, 5),
     'a_razonamiento_numerico_1': random.randint(0, 5),
     'a_razonamiento_numerico_2': random.randint(0, 5),
     'a_razonamiento_numerico_3': random.randint(0, 5),
-    'a_aptitud_espacial_1': random.randint(0, 5),
-    'a_aptitud_espacial_2': random.randint(0, 5),
-    'a_aptitud_espacial_3': random.randint(0, 5),
+    'a_espacial_1': random.randint(0, 5),
+    'a_espacial_2': random.randint(0, 5),
+    'a_espacial_3': random.randint(0, 5),
     'a_creatividad_1': random.randint(0, 5),
     'a_creatividad_2': random.randint(0, 5),
     'a_creatividad_3': random.randint(0, 5),
@@ -87,29 +87,28 @@ sum([hechos_intereses[f'i_convencional_{i}'] for i in range(1, 6)])/5,
 
 puntajes_aptitudes = {
     'a_razonamiento_verbal':
-sum([hechos_aptitudes[f'a_razonamiento_verbal_{i}'] for i in range(1, 4)])/3,
+min (1, ((sum([hechos_aptitudes[f'a_razonamiento_verbal_{i}'] for i in range(1, 4)])/3) - 1)/3),
 'a_razonamiento_abstracto':
-sum([hechos_aptitudes[f'a_razonamiento_abstracto_{i}'] for i in range(1, 4)])/3,
-    'a_mecananica':
-sum([hechos_aptitudes[f'a_mecananica_{i}'] for i in range(1, 4)])/3,    
+min (1, ((sum([hechos_aptitudes[f'a_razonamiento_abstracto_{i}'] for i in range(1, 4)])/3) - 1)/3),
+    'a_mecanica':
+min (1, ((sum([hechos_aptitudes[f'a_mecanica_{i}'] for i in range(1, 4)])/3) - 1)/3),    
     'a_memoria': 
-sum([hechos_aptitudes[f'a_memoria_{i}'] for i in range(1, 4)])/3,
-    'a_aptitud_interpersonal':
-sum([hechos_aptitudes[f'a_aptitud_interpersonal_{i}'] for i in range(1, 4)])/3,
+min (1, ((sum([hechos_aptitudes[f'a_memoria_{i}'] for i in range(1, 4)])/3) - 1)/3),
+    'a_interpersonal':
+min (1, ((sum([hechos_aptitudes[f'a_interpersonal_{i}'] for i in range(1, 4)])/3) - 1)/3),
     'a_destreza_manual':
-sum([hechos_aptitudes[f'a_destreza_manual_{i}'] for i in range(1, 4)])/3,
+min (1, ((sum([hechos_aptitudes[f'a_destreza_manual_{i}'] for i in range(1, 4)])/3) - 1)/3),
     'a_razonamiento_numerico':
-sum([hechos_aptitudes[f'a_razonamiento_numerico_{i}'] for i in range(1, 4)])/3,
-    'a_aptitud_espacial':
-sum([hechos_aptitudes[f'a_aptitud_espacial_{i}'] for i in range(1, 4)])/3,
+min (1, ((sum([hechos_aptitudes[f'a_razonamiento_numerico_{i}'] for i in range(1, 4)])/3) - 1)/3),
+    'a_espacial':
+min (1, ((sum([hechos_aptitudes[f'a_espacial_{i}'] for i in range(1, 4)])/3) - 1)/3),
     'a_creatividad': 
-sum([hechos_aptitudes[f'a_creatividad_{i}'] for i in range(1, 4)])/3,
+min (1, ((sum([hechos_aptitudes[f'a_creatividad_{i}'] for i in range(1, 4)])/3) - 1)/3),
     'a_pensamiento_computacional':
-sum([hechos_aptitudes[f' a_pensamiento_computacional_{i}'] for i in range(1, 4)])/3,
+min (1, ((sum([hechos_aptitudes[f' a_pensamiento_computacional_{i}'] for i in range(1, 4)])/3) - 1)/3),
+
 
 }
-
-
 
 
 top_intereses = dict(sorted(puntajes_intereses.items(), key=lambda item: item[1], reverse=True)) #esta línea ordena el diccionario de puntajes de intereses de mayor a menor y lo guarda en la variable top_intereses
@@ -122,113 +121,122 @@ top_intereses = dict(sorted(puntajes_intereses.items(), key=lambda item: item[1]
 # print(f"2. {interes_segundo} con un puntaje de {valor_2}")
 # print(f"3. {interes_tercero} con un puntaje de {valor_3}")
 
-resultado_fisico_matematico = 0
-resultado_quimico_biologico = 0
-resultado_economico_administrativo = 0
-resultado_humanidades= 0
+interes_fisico_matematico = 0
+interes_quimico_biologico = 0
+interes_economico_administrativo = 0
+interes_humanidades= 0
 
 
 match interes_primero:
     case 'i_realista':
-        resultado_fisico_matematico = resultado_fisico_matematico + 6
-        resultado_quimico_biologico = resultado_quimico_biologico + 6
-        resultado_economico_administrativo = resultado_economico_administrativo + 3
-        resultado_humanidades = resultado_humanidades + 0
+        interes_fisico_matematico = interes_fisico_matematico + 6
+        interes_quimico_biologico = interes_quimico_biologico + 6
+        interes_economico_administrativo = interes_economico_administrativo + 3
+        interes_humanidades = interes_humanidades + 0
 
     case 'i_investigativo':
-        resultado_fisico_matematico = resultado_fisico_matematico + 9
-        resultado_quimico_biologico = resultado_quimico_biologico + 9
-        resultado_economico_administrativo = resultado_economico_administrativo + 0
-        resultado_humanidades = resultado_humanidades + 3
+        interes_fisico_matematico = interes_fisico_matematico + 9
+        interes_quimico_biologico = interes_quimico_biologico + 9
+        interes_economico_administrativo = interes_economico_administrativo + 0
+        interes_humanidades = interes_humanidades + 3
     case 'i_artistico':
-        resultado_fisico_matematico = resultado_fisico_matematico + 6
-        resultado_quimico_biologico = resultado_quimico_biologico + 6
-        resultado_economico_administrativo = resultado_economico_administrativo + 3
-        resultado_humanidades = resultado_humanidades + 6
+        interes_fisico_matematico = interes_fisico_matematico + 6
+        interes_quimico_biologico = interes_quimico_biologico + 6
+        interes_economico_administrativo = interes_economico_administrativo + 3
+        interes_humanidades = interes_humanidades + 6
     case 'i_social':
-        resultado_fisico_matematico = resultado_fisico_matematico + 3
-        resultado_quimico_biologico = resultado_quimico_biologico + 3
-        resultado_economico_administrativo = resultado_economico_administrativo + 6
-        resultado_humanidades = resultado_humanidades + 9
+        interes_fisico_matematico = interes_fisico_matematico + 3
+        interes_quimico_biologico = interes_quimico_biologico + 3
+        interes_economico_administrativo = interes_economico_administrativo + 6
+        interes_humanidades = interes_humanidades + 9
     case 'i_emprendedor':
-        resultado_fisico_matematico =  resultado_fisico_matematico + 0
-        resultado_quimico_biologico =  resultado_quimico_biologico + 0
-        resultado_economico_administrativo =  resultado_economico_administrativo + 9
-        resultado_humanidades =  resultado_humanidades + 6
+        interes_fisico_matematico =  interes_fisico_matematico + 0
+        interes_quimico_biologico =  interes_quimico_biologico + 0
+        interes_economico_administrativo =  interes_economico_administrativo + 9
+        interes_humanidades =  interes_humanidades + 6
     case 'i_convencional':
-        resultado_fisico_matematico =  resultado_fisico_matematico + 3
-        resultado_quimico_biologico =  resultado_quimico_biologico + 3
-        resultado_economico_administrativo =  resultado_economico_administrativo + 6
-        resultado_humanidades =  resultado_humanidades + 3
+        interes_fisico_matematico =  interes_fisico_matematico + 3
+        interes_quimico_biologico =  interes_quimico_biologico + 3
+        interes_economico_administrativo =  interes_economico_administrativo + 6
+        interes_humanidades =  interes_humanidades + 3
 
 match interes_segundo:
     case 'i_realista':
-        resultado_fisico_matematico = resultado_fisico_matematico + 6
-        resultado_quimico_biologico = resultado_quimico_biologico + 0
-        resultado_economico_administrativo = resultado_economico_administrativo + 4
-        resultado_humanidades = resultado_humanidades + 2
+        interes_fisico_matematico = interes_fisico_matematico + 6
+        interes_quimico_biologico = interes_quimico_biologico + 0
+        interes_economico_administrativo = interes_economico_administrativo + 4
+        interes_humanidades = interes_humanidades + 2
 
     case 'i_investigativo':
-        resultado_fisico_matematico = resultado_fisico_matematico + 4
-        resultado_quimico_biologico = resultado_quimico_biologico + 2
-        resultado_economico_administrativo = resultado_economico_administrativo + 2
-        resultado_humanidades = resultado_humanidades + 4
+        interes_fisico_matematico = interes_fisico_matematico + 4
+        interes_quimico_biologico = interes_quimico_biologico + 2
+        interes_economico_administrativo = interes_economico_administrativo + 2
+        interes_humanidades = interes_humanidades + 4
     case 'i_artistico':
-        resultado_fisico_matematico = resultado_fisico_matematico + 2
-        resultado_quimico_biologico = resultado_quimico_biologico + 4
-        resultado_economico_administrativo = resultado_economico_administrativo + 0
-        resultado_humanidades = resultado_humanidades + 6
+        interes_fisico_matematico = interes_fisico_matematico + 2
+        interes_quimico_biologico = interes_quimico_biologico + 4
+        interes_economico_administrativo = interes_economico_administrativo + 0
+        interes_humanidades = interes_humanidades + 6
     case 'i_social':
-        resultado_fisico_matematico = resultado_fisico_matematico + 0
-        resultado_quimico_biologico = resultado_quimico_biologico + 6
-        resultado_economico_administrativo = resultado_economico_administrativo + 2
-        resultado_humanidades = resultado_humanidades + 4
+        interes_fisico_matematico = interes_fisico_matematico + 0
+        interes_quimico_biologico = interes_quimico_biologico + 6
+        interes_economico_administrativo = interes_economico_administrativo + 2
+        interes_humanidades = interes_humanidades + 4
     case 'i_emprendedor':
-        resultado_fisico_matematico =  resultado_fisico_matematico + 2
-        resultado_quimico_biologico =  resultado_quimico_biologico + 4
-        resultado_economico_administrativo =  resultado_economico_administrativo + 4
-        resultado_humanidades =  resultado_humanidades + 2
+        interes_fisico_matematico =  interes_fisico_matematico + 2
+        interes_quimico_biologico =  interes_quimico_biologico + 4
+        interes_economico_administrativo =  interes_economico_administrativo + 4
+        interes_humanidades =  interes_humanidades + 2
     case 'i_convencional':
-        resultado_fisico_matematico =  resultado_fisico_matematico + 4
-        resultado_quimico_biologico =  resultado_quimico_biologico + 2
-        resultado_economico_administrativo =  resultado_economico_administrativo + 6
-        resultado_humanidades =  resultado_humanidades + 0
+        interes_fisico_matematico =  interes_fisico_matematico + 4
+        interes_quimico_biologico =  interes_quimico_biologico + 2
+        interes_economico_administrativo =  interes_economico_administrativo + 6
+        interes_humanidades =  interes_humanidades + 0
 
 match interes_tercero:
     case 'i_realista':
-        resultado_fisico_matematico = resultado_fisico_matematico + 2
-        resultado_quimico_biologico = resultado_quimico_biologico + 3
-        resultado_economico_administrativo = resultado_economico_administrativo + 2
-        resultado_humanidades = resultado_humanidades + 2
+        resultado_fisico_matematico = interes_fisico_matematico + 2
+        resultado_quimico_biologico = interes_quimico_biologico + 3
+        resultado_economico_administrativo = interes_economico_administrativo + 2
+        resultado_humanidades = interes_humanidades + 2
 
     case 'i_investigativo':
-        resultado_fisico_matematico = resultado_fisico_matematico + 1
-        resultado_quimico_biologico = resultado_quimico_biologico + 2
-        resultado_economico_administrativo = resultado_economico_administrativo + 3
-        resultado_humanidades = resultado_humanidades + 3
+        resultado_fisico_matematico = interes_fisico_matematico + 1
+        resultado_quimico_biologico = interes_quimico_biologico + 2
+        resultado_economico_administrativo = interes_economico_administrativo + 3
+        resultado_humanidades = interes_humanidades + 3
     case 'i_artistico':
-        resultado_fisico_matematico = resultado_fisico_matematico + 0
-        resultado_quimico_biologico = resultado_quimico_biologico + 1
-        resultado_economico_administrativo = resultado_economico_administrativo + 2
-        resultado_humanidades = resultado_humanidades + 2
+        resultado_fisico_matematico = interes_fisico_matematico + 0
+        resultado_quimico_biologico = interes_quimico_biologico + 1
+        resultado_economico_administrativo = interes_economico_administrativo + 2
+        resultado_humanidades = interes_humanidades + 2
     case 'i_social':
-        resultado_fisico_matematico = resultado_fisico_matematico + 1
-        resultado_quimico_biologico = resultado_quimico_biologico + 0
-        resultado_economico_administrativo = resultado_economico_administrativo + 3
-        resultado_humanidades = resultado_humanidades + 1
+        resultado_fisico_matematico = interes_fisico_matematico + 1
+        resultado_quimico_biologico = interes_quimico_biologico + 0
+        resultado_economico_administrativo = interes_economico_administrativo + 3
+        resultado_humanidades = interes_humanidades + 1
     case 'i_emprendedor':
-        resultado_fisico_matematico =  resultado_fisico_matematico + 2
-        resultado_quimico_biologico =  resultado_quimico_biologico + 1
-        resultado_economico_administrativo =  resultado_economico_administrativo + 2
-        resultado_humanidades =  resultado_humanidades + 0
+        resultado_fisico_matematico =  interes_fisico_matematico + 2
+        resultado_quimico_biologico =  interes_quimico_biologico + 1
+        resultado_economico_administrativo =  interes_economico_administrativo + 2
+        resultado_humanidades =  interes_humanidades + 0
     case 'i_convencional':
-        resultado_fisico_matematico =  resultado_fisico_matematico + 3
-        resultado_quimico_biologico =  resultado_quimico_biologico + 2
-        resultado_economico_administrativo =  resultado_economico_administrativo + 1
-        resultado_humanidades =  resultado_humanidades + 1
+        resultado_fisico_matematico =  interes_fisico_matematico + 3
+        resultado_quimico_biologico =  interes_quimico_biologico + 2
+        resultado_economico_administrativo =  interes_economico_administrativo + 1
+        resultado_humanidades =  interes_humanidades + 1
 
-print("Resultados de la ponderación de intereses:")
-print(f"Resultado Físico-Matemático: {resultado_fisico_matematico/18}")
-print(f"Resultado Químico-Biológico: {resultado_quimico_biologico/18}")
-print(f"Resultado Económico-Administrativo: {resultado_economico_administrativo/18}")
-print(f"Resultado Humanidades: {resultado_humanidades/18}")
+# print("Resultados de la ponderación de intereses:")
+# print(f"Resultado Físico-Matemático: {interes_fisico_matematico/18}")
+# print(f"Resultado Químico-Biológico: {interes_quimico_biologico/18}")
+# print(f"Resultado Económico-Administrativo: {interes_economico_administrativo/18}")
+# print(f"Resultado Humanidades: {interes_humanidades/18}")
+
+aptitud_fisico_matematico = ((1 * (puntajes_aptitudes['a_razonamiento_numerico'] + puntajes_aptitudes['a_razonamiento_abstracto'] + puntajes_aptitudes['a_pensamiento_computacional'] + puntajes_aptitudes['a_espacial'] ))+(0.5 * (puntajes_aptitudes['a_mecanica']  + puntajes_aptitudes['a_destreza_manual'] )))/5
+aptitud_quimico_biologico = 0
+aptitud_economico_administrativo = 0
+aptitud_humanidades= 0
+
+
+
+print(aptitud_fisico_matematico)
