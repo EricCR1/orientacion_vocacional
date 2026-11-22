@@ -195,36 +195,36 @@ match interes_segundo:
 
 match interes_tercero:
     case 'i_realista':
-        resultado_fisico_matematico = interes_fisico_matematico + 2
-        resultado_quimico_biologico = interes_quimico_biologico + 3
-        resultado_economico_administrativo = interes_economico_administrativo + 2
-        resultado_humanidades = interes_humanidades + 2
+        interes_fisico_matematico = interes_fisico_matematico + 2
+        interes_quimico_biologico = interes_quimico_biologico + 3
+        interes_economico_administrativo = interes_economico_administrativo + 2
+        interes_humanidades = interes_humanidades + 2
 
     case 'i_investigativo':
-        resultado_fisico_matematico = interes_fisico_matematico + 1
-        resultado_quimico_biologico = interes_quimico_biologico + 2
-        resultado_economico_administrativo = interes_economico_administrativo + 3
-        resultado_humanidades = interes_humanidades + 3
+        interes_fisico_matematico = interes_fisico_matematico + 1
+        interes_quimico_biologico = interes_quimico_biologico + 2
+        interes_economico_administrativo = interes_economico_administrativo + 3
+        interes_humanidades = interes_humanidades + 3
     case 'i_artistico':
-        resultado_fisico_matematico = interes_fisico_matematico + 0
-        resultado_quimico_biologico = interes_quimico_biologico + 1
-        resultado_economico_administrativo = interes_economico_administrativo + 2
-        resultado_humanidades = interes_humanidades + 2
+        interes_fisico_matematico = interes_fisico_matematico + 0
+        interes_quimico_biologico = interes_quimico_biologico + 1
+        interes_economico_administrativo = interes_economico_administrativo + 2
+        interes_humanidades = interes_humanidades + 2
     case 'i_social':
-        resultado_fisico_matematico = interes_fisico_matematico + 1
-        resultado_quimico_biologico = interes_quimico_biologico + 0
-        resultado_economico_administrativo = interes_economico_administrativo + 3
-        resultado_humanidades = interes_humanidades + 1
+        interes_fisico_matematico = interes_fisico_matematico + 1
+        interes_quimico_biologico = interes_quimico_biologico + 0
+        interes_economico_administrativo = interes_economico_administrativo + 3
+        interes_humanidades = interes_humanidades + 1
     case 'i_emprendedor':
-        resultado_fisico_matematico =  interes_fisico_matematico + 2
-        resultado_quimico_biologico =  interes_quimico_biologico + 1
-        resultado_economico_administrativo =  interes_economico_administrativo + 2
-        resultado_humanidades =  interes_humanidades + 0
+        interes_fisico_matematico =  interes_fisico_matematico + 2
+        interes_quimico_biologico =  interes_quimico_biologico + 1
+        interes_economico_administrativo =  interes_economico_administrativo + 2
+        interes_humanidades =  interes_humanidades + 0
     case 'i_convencional':
-        resultado_fisico_matematico =  interes_fisico_matematico + 3
-        resultado_quimico_biologico =  interes_quimico_biologico + 2
-        resultado_economico_administrativo =  interes_economico_administrativo + 1
-        resultado_humanidades =  interes_humanidades + 1
+        interes_fisico_matematico =  interes_fisico_matematico + 3
+        interes_quimico_biologico =  interes_quimico_biologico + 2
+        interes_economico_administrativo =  interes_economico_administrativo + 1
+        interes_humanidades =  interes_humanidades + 1
 
 # print("Resultados de la ponderación de intereses:")
 # print(f"Resultado Físico-Matemático: {interes_fisico_matematico/18}")
@@ -240,8 +240,20 @@ aptitud_economico_administrativo = ((1 * (puntajes_aptitudes['a_razonamiento_num
 
 aptitud_humanidades= ((1 * (puntajes_aptitudes['a_razonamiento_verbal'] + puntajes_aptitudes['a_creatividad'] + puntajes_aptitudes['a_interpersonal'] + puntajes_aptitudes['a_memoria'] ))+(0.5 * (puntajes_aptitudes['a_espacial']  + puntajes_aptitudes['a_destreza_manual'] )))/5
 
-print("Resultados de la ponderación de aptitudes:")
-print(f"Aptitud Físico-Matemático: {aptitud_fisico_matematico}")
-print(f"Aptitud Químico-Biológico: {aptitud_quimico_biologico}")
-print(f"Aptitud Económico-Administrativo: {aptitud_economico_administrativo}")
-print(f"Aptitud Humanidades: {aptitud_humanidades}")
+# print("Resultados de la ponderación de aptitudes:")
+# print(f"Aptitud Físico-Matemático: {aptitud_fisico_matematico}")
+# print(f"Aptitud Químico-Biológico: {aptitud_quimico_biologico}")
+# print(f"Aptitud Económico-Administrativo: {aptitud_economico_administrativo}")
+# print(f"Aptitud Humanidades: {aptitud_humanidades}")
+
+resultado_final_fisico_matematico = 100 * (0.6 * interes_fisico_matematico/18 + 0.4 * aptitud_fisico_matematico)
+print(f"Resultado final Físico-Matemático: {resultado_final_fisico_matematico} %")
+
+resultado_final_quimico_biologico = 100 * (0.6 * interes_quimico_biologico/18 + 0.4 * aptitud_quimico_biologico)
+print(f"Resultado final Químico-Biológico: {resultado_final_quimico_biologico} %")
+
+resultado_final_economico_administrativo = 100 * (0.6 * interes_economico_administrativo/18 + 0.4 * aptitud_economico_administrativo)
+print(f"Resultado final Económico-Administrativo: {resultado_final_economico_administrativo} %")
+
+resultado_final_humanidades = 100 * (0.6 * interes_humanidades/18 + 0.4 * aptitud_humanidades)
+print(f"Resultado final Humanidades: {resultado_final_humanidades} %")
